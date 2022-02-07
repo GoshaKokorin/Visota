@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Новости
+{% endblock %}
+
+{% block content %}
+
+    <!-- PAGE TITLE
+    ================================================== -->
+    <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="6"
+             data-background="{{ STATIC_URL }}img/banner/page-title.jpg">
+        <div class="container position-unset">
+            <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Новости</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="ps-0">
+                            <li><a href="{% url 'home' %}">Главная</a></li>
+                            <li><a href="#!">Новости</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG LIST
+    ================================================== -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-1-9 mb-lg-0">
+                    <div class="row mt-n1-9">
+                        {% for blog in blog %}
+                            <div class="col-12 mt-1-9 wow fadeIn" data-wow-delay="200ms">
+                                <article class="card card-style3 border-0 h-100">
+                                    <div class="card-img position-relative">
+                                        <img src="{{ MEDIA_URL }}{{ blog.image }}" alt="...">
+                                    </div>
+                                    <div class="card-body p-xl-1-9 p-4">
+                                        <h3 class="h5 mb-3"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a>
+                                        </h3>
+                                        <p>{{ blog.text_mini | safe }}</p>
+                                        <a href="{{ blog.get_absolute_url }}"
+                                           class="fw-bold text-primary text-secondary-hover">Узнать
+                                            больше</a>
+                                    </div>
+                                    <div class="card-footer bg-white py-4 px-0 mx-4 mx-xl-1-9">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="display-30"><i
+                                                    class="ti-calendar me-1 text-primary"></i>{{ blog.date_post }}</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

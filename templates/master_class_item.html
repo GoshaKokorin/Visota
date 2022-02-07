@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {{ master_class_item.title }}
+{% endblock %}
+
+{% block content %}
+
+    <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="6"
+             data-background="{{ STATIC_URL }}img/banner/page-title.jpg">
+        <div class="container position-unset">
+            <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1></h1>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="ps-0">
+                            <li><a href="{% url 'home' %}">Главная</a></li>
+                            <li><a href="#!"></a>Мастер-классы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ABOUTUS
+        ================================================== -->
+    <section class="aboutus" style="padding-top: 20px;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-2-2 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+                    <div class="pe-lg-1-9 pe-xl-2-9 position-relative z-index-1">
+                        <img src="{{ MEDIA_URL }}{{ master_class_item.image }}" alt="..." class="rounded">
+                        {% if master_class_item.discount == True %}
+                        <div class="box-left py-4 px-4 px-sm-4 px-md-5">
+                            <h3 class="text-secondary">Пробное занятие бесплатно</h3>
+                        </div>
+                        {% endif %}
+                        <span class="about-img d-none d-lg-inline-block">
+                                <img src="{{ STATIC_URL }}img/content/dots1.png" alt="..."
+                                     class="position-absolute left-n25 bottom-n20 z-index-minus2 ani-left-right">
+                            </span>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="400ms">
+                    <div class="about-title">
+                        <h2 class="mb-1-6">{{ master_class_item.title }}</h2>
+                        <p>{{ master_class_item.text  | safe }}</p>
+                        <ul class="list-style1 mb-4">
+                            {% for item in master_class_item.item.all %}
+                                <li>{{ item.title }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="d-sm-flex justify-content-sm-between align-items-center border-top pt-4 mt-4 border-color-light-gray">
+                        <div class="media align-items-center mb-3 mb-sm-0">
+                            <img src="{{ MEDIA_URL }}{{ master_class_item.photo }}" class="rounded-circle" alt="...">
+                            <div class="media-body ms-4">
+                                <h4 class="mb-1 h6">{{ master_class_item.teacher }}</h4>
+                                <p class="mb-0">{{ master_class_item.profession }}</p>
+                            </div>
+                        </div>
+                        <div>
+
+                            <button type="button" class="butn-style1" data-bs-toggle="modal" data-bs-target="#centered">
+                                Записаться
+                            </button>
+                            <!-- Vertically centered -->
+                            <div class="modal fade" id="centered" tabindex="-1" aria-labelledby="centeredLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="centeredLabel">Записаться</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form class="quform" action="" method="POST" enctype="multipart/form-data"
+                                                  onclick="">
+                                                {% csrf_token %}
+                                                <div class="quform-elements">
+                                                    <div class="row">
+                                                        <!-- Begin Text input element -->
+                                                        <div class="col-md-12">
+                                                            <div class="quform-element">
+                                                                <label for="name">Имя</label>
+                                                                <div class="quform-input">
+                                                                    {{ form.name|add_class:'form-control' }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Text input element -->
+
+                                                        <!-- Begin Text input element -->
+                                                        <div class="col-md-12">
+                                                            <div class="quform-element">
+                                                                <label for="email">Email</label>
+                                                                <div class="quform-input">
+                                                                    {{ form.connection|add_class:'form-control' }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Text input element -->
+
+                                                        <!-- Begin Textarea element -->
+                                                        <div class="col-md-12">
+                                                            <div class="quform-element">
+                                                                <label for="message">Сообщение</label>
+                                                                <div class="quform-input">
+                                                                    {{ form.text|add_class:'form-control' }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Textarea element -->
+
+                                                        <!-- Begin Submit button -->
+                                                        <div class="col-md-12">
+                                                            <div class="quform-submit-inner">
+                                                                <button class="butn-style3" type="submit"><span>Отправить</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="quform-loading-wrap text-start"><span
+                                                                    class="quform-loading"></span></div>
+                                                        </div>
+                                                        <!-- End Submit button -->
+
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 0px;">
+        <div class="container">
+            <div class="text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <h2 class="mb-0 h1">Цена</h2>
+            </div>
+            <div class="row g-xl-5 mt-n2-9">
+                {% for price in master_class_item.master_class_price.all %}
+                    <div class="col-lg-3 mt-2-9 wow fadeIn" data-wow-delay="200ms">
+                        <div class="pricing-block text-center px-6 pb-3">
+                            <div class="pricing-head">
+                                <h4 class="h2">{{ price.title }}</h4>
+                            </div>
+                            <div class="price-plan">
+                                <h3 class="h1 mb-1">{{ price.text }} &nbsp;</h3>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Новости
+{% endblock %}
+
+{% block content %}
+    <!-- PAGE TITLE
+            ================================================== -->
+    <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="6"
+             data-background="img/banner/page-title.jpg">
+        <div class="container position-unset">
+            <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Blog Details</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="ps-0">
+                            <li><a href="index.html">Главная</a></li>
+                            <li><a href="#!">{{ blog.title }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG DETAILS
+    ================================================== -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb-5 mb-lg-0">
+                    <div class="row">
+                        <div class="col-lg-12 mb-2-3">
+                            <div class="card card-style7 border-0">
+                                <img src="{{ MEDIA_URL }}{{ blog.image }}" class="card-img-top" alt="...">
+                                <div class="card-body px-4 py-2-3">
+                                    <h2 class="mb-4">{{ blog.title }}</h2>
+                                    <p>{{ blog.text | safe }}</p>
+                                    <p>{{ blog.date_course | safe }}</p>
+                                    <div class="pt-4">
+                                        <h4 class="h6 d-inline-block me-2">Следите за нами:</h4>
+                                        <a href="https://www.facebook.com/people/Высота-Творческая-Студия/100058627750963/"
+                                           class="me-2"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://www.instagram.com/vysota174?utm_medium=copy_link" class="me-2"><i
+                                                class="fab fa-instagram"></i></a>
+                                        <a href="https://www.youtube.com/channel/UCOx_dSvd-08qsJ9WYG885sQ/featured"
+                                           class="me-2"><i class="fab fa-youtube"></i></a>
+                                        <a href="https://vk.com/vysota174" class="me-2"><i class="fab fa-vk"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="blog-form p-1-9">
+                                <h3 class="mb-1-9 h4">Свяжитесь с нами!</h3>
+                                <form class="quform" action="" method="POST" enctype="multipart/form-data" onclick="">
+                                     {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                {{ form.name|add_class:'form-control' }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                   {{ form.connection|add_class:'form-control' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                       {{ form.text|add_class:'form-control' }}
+                                    </div>
+                                    <div>
+                                        <button class="butn-style3 medium" type="submit">Отправить</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

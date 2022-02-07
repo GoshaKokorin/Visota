@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Галлерея
+{% endblock %}
+
+{% block content %}
+    <!-- PAGE TITLE
+        ================================================== -->
+        <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="6" data-background="{{ STATIC_URL }}img/banner/page-title.jpg">
+            <div class="container position-unset">
+                <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Галлерея</h1>
+                        </div>
+                        <div class="col-md-12">
+                            <ul class="ps-0">
+                                <li><a href="{% url 'home' %}">Главная</a></li>
+                                <li><a href="{% url 'gallery' %}">Галлерея</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO
+        ================================================== -->
+        <section>
+            <div class="container">
+                <div class="row">
+
+                </div>
+                <div class="row portfolio-gallery-isotope mt-4">
+                    {% for photo in photos %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4 items health" data-src="{{ MEDIA_URL }}{{ photo.image }}">
+                        <div class="portfolio-box position-relative overflow-hidden">
+                            <div class="portfolio-img">
+                                <img src="{{ MEDIA_URL }}{{ photo.image }}" alt="...">
+                            </div>
+                            <div class="portfolio-content d-flex justify-content-center text-center">
+                                <div class="me-4">
+                                    <h3 class="h6 mb-0"><a href="#!" class="text-primary">{{ photo.title }}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+{% endblock %}

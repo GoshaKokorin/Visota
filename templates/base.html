@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- metas -->
+    <meta charset="utf-8"/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <!-- title  -->
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/logos/logo.png">
+    <link rel="apple-touch-icon" href="{{ STATIC_URL }}img/logos/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}img/logos/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}img/logos/apple-touch-icon-114x114.png">
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/plugins.css">
+
+    <!-- search css -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}search/search.css">
+
+    <!-- quform css -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}quform/css/base.css">
+
+    <!-- theme core css -->
+    <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet">
+
+    <!-- custom css -->
+    <link href="{{ STATIC_URL }}css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- PAGE LOADING
+================================================== -->
+<div id="preloader"></div>
+
+<!-- MAIN WRAPPER
+================================================== -->
+<div class="main-wrapper">
+
+    <!-- HEADER
+    ================================================== -->
+    <header class="header-style3">
+
+        <div id="top-bar">
+            <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">
+                <div class="row">
+                    <div class="col-md-9 col-xs-12">
+                        <div class="top-bar-info">
+                            <ul class="ps-0">
+                                <li><i class="ti-mobile"></i>+7 (950) 742-18-85</li>
+                                <li class="d-none d-sm-inline-block"><i class="ti-email"></i>Vysota74@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3 d-none d-md-block">
+                        <ul class="top-social-icon ps-0">
+                            <li>
+                                <a href="https://www.facebook.com/people/%D0%92%D1%8B%D1%81%D0%BE%D1%82%D0%B0-%D0%A2%D0%B2%D0%BE%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F/100058627750963/"><i
+                                        class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://vk.com/vysota174"><i class="fab fa-vk"></i></a></li>
+                            <li><a href="https://instagram.com/vysota174?utm_medium=copy_link"><i
+                                    class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCOx_dSvd-08qsJ9WYG885sQ/featured"
+                                   ><i class="fab fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-default">
+
+            <!-- start top search -->
+            {#                <div class="top-search bg-dark">#}
+            {#                    <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">#}
+            {#                        <form class="search-form" action="search.html" method="GET" accept-charset="utf-8">#}
+            {#                            <div class="input-group">#}
+            {#                                <span class="input-group-addon cursor-pointer">#}
+            {#                                    <button class="search-form_submit fas fa-search text-white" type="submit"></button>#}
+            {#                                </span>#}
+            {#                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Type & hit enter...">#}
+            {#                                <span class="input-group-addon close-search mt-1"><i class="fas fa-times"></i></span>#}
+            {#                            </div>#}
+            {#                        </form>#}
+            {#                    </div>#}
+            {#                </div>#}
+            <!-- end top search -->
+
+            <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-12">
+                        <div class="menu_area alt-font">
+                            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                                <div class="navbar-header navbar-header-custom">
+                                    <!-- start logo -->
+                                    <a href="{% url 'home' %}" class="navbar-brand logodefault"><img id="logo"
+                                                                                                     src="{{ STATIC_URL }}img/logos/logo.png"
+                                                                                                     alt="logo"/></a>
+                                    <!-- end logo -->
+                                </div>
+
+                                <div class="navbar-toggler"></div>
+
+                                <!-- start menu area -->
+                                <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
+                                    <li><a href="{% url 'home' %}">Главная</a></li>
+                                    <li><a href="{% url 'gallery' %}">Галлерея</a></li>
+                                    <li><a href="{% url 'master_classes_all' %}">Мастер-классы</a></li>
+                                    <li><a href="{% url 'group_lessons_all' %}">Наши соты направлений</a></li>
+                                    <li><a href="{% url 'blog_list' %}">Новости</a></li>
+                                </ul>
+                                <!-- end menu area -->
+
+                                <!-- start attribute navigation -->
+                                <div class="attr-nav align-items-lg-center ms-lg-auto main-font">
+                                </div>
+                                <!-- end attribute navigation -->
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    {% block content %}
+    {% endblock %}
+
+
+    <!-- FOOTER
+   ================================================== -->
+    <footer class="footer2 bg-img theme-overlay-blue-dark pt-6 pt-md-8" data-overlay-dark="7"
+            data-background="img/bg/footer-map.png">
+        <div class="container">
+            <div class="row mb-6 mb-md-8 mt-n1-9" style="margin-bottom: 0.5rem;">
+                <div class="col-md-6 col-lg-3 mt-1-9 wow fadeIn" data-wow-delay="200ms">
+                    <div>
+                        <h3 class="text-primary mb-1-9 h5">Контакты</h3>
+                        <p class="mb-1-9 text-white opacity9">Свяжитесь с нами!</p>
+                        <ul class="footer-link list-unstyled mb-0">
+                            <li class="mb-3"><a href="#!" class="ps-0"><i
+                                    class="ti-mobile display-28 align-middle text-primary pe-3"></i>+7 (950)
+                                742-18-85</a></li>
+                            <li class="mb-3"><a href="#!" class="ps-0"><i
+                                    class="ti-email display-28 align-middle text-primary pe-3"></i>Vysota74@gmail.com</a>
+                            </li>
+                            <li><i class="ti-location-pin display-28 align-middle text-primary pe-3"></i>Челябинск, пр.
+                                Ленина 33
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled mb-0" style="margin-top: 20px;">
+                            <li class="d-inline-block me-3"><a
+                                    href="https://www.facebook.com/people/%D0%92%D1%8B%D1%81%D0%BE%D1%82%D0%B0-%D0%A2%D0%B2%D0%BE%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F/100058627750963/"
+                                    class="text-primary"><i
+                                    class="ti-facebook"></i></a></li>
+                            <li class="d-inline-block me-3"><a href="https://vk.com/vysota174" class="text-primary"><i
+                                    class="fab fa-vk"></i></a>
+                            </li>
+                            <li class="d-inline-block me-3"><a
+                                    href="https://instagram.com/vysota174?utm_medium=copy_link" class="text-primary"><i
+                                    class="ti-instagram"></i></a></li>
+                            <li class="d-inline-block me-3"><a
+                                    href="https://www.youtube.com/channel/UCOx_dSvd-08qsJ9WYG885sQ/featured"
+                                    class="text-primary"><i class="fab fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mt-1-9 wow fadeIn" data-wow-delay="350ms">
+                </div>
+                <div class="col-md-6 col-lg-3 mt-1-9 wow fadeIn" data-wow-delay="500ms">
+                </div>
+                <div class="col-md-6 col-lg-3 mt-1-9 wow fadeIn" data-wow-delay="200ms">
+                    <div class="footer-top">
+                        <div class="mb-4">
+                            <img src="{{ STATIC_URL }}img/banner/footer-green.png" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-color-light-white py-4 wow fadeIn" data-wow-delay="200ms">
+                <div class="text-center">
+                    <p class="d-inline-block mb-0 text-white">&copy; <span class="current-year"></span> Творческая
+                        студия "Высота"</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- start scroll to top -->
+<a href="#!" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+<!-- end scroll to top -->
+
+<!-- all js include start -->
+
+<!-- jQuery -->
+<script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+
+<!-- popper -->
+<script src="{{ STATIC_URL }}js/popper.min.js"></script>
+
+<!-- bootstrap -->
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+
+<!-- scrollIt -->
+<script src="{{ STATIC_URL }}js/scrollIt.min.js"></script>
+
+<!-- navigation -->
+<script src="{{ STATIC_URL }}js/nav-menu.js"></script>
+
+<!-- tab -->
+<script src="{{ STATIC_URL }}js/easy.responsive.tabs.js"></script>
+
+<!-- owl carousel -->
+<script src="{{ STATIC_URL }}js/owl.carousel.js"></script>
+
+<!-- owl carousel thumbs -->
+<script src="{{ STATIC_URL }}js/owl.carousel.thumbs.js"></script>
+
+<!-- jquery.counterup.min -->
+<script src="{{ STATIC_URL }}js/jquery.counterup.min.js"></script>
+
+<!-- stellar js -->
+<script src="{{ STATIC_URL }}js/jquery.stellar.min.js"></script>
+
+<!-- waypoints js -->
+<script src="{{ STATIC_URL }}js/waypoints.min.js"></script>
+
+<!-- countdown js -->
+<script src="{{ STATIC_URL }}js/countdown.js"></script>
+
+<!-- jquery.magnific-popup js -->
+<script src="{{ STATIC_URL }}js/jquery.magnific-popup.min.js"></script>
+
+<!-- lightgallery js -->
+<script src="{{ STATIC_URL }}js/lightgallery-all.js"></script>
+
+<!-- mousewheel js -->
+<script src="{{ STATIC_URL }}js/jquery.mousewheel.min.js"></script>
+
+<!-- wow js -->
+<script src="{{ STATIC_URL }}js/wow.js"></script>
+
+<!-- isotope.pkgd.min js -->
+<script src="{{ STATIC_URL }}js/isotope.pkgd.min.js"></script>
+
+<!-- custom scripts -->
+<script src="{{ STATIC_URL }}js/main.js"></script>
+
+<!-- form plugins js -->
+<script src="{{ STATIC_URL }}quform/js/plugins.js"></script>
+
+<!-- form scripts js -->
+<script src="{{ STATIC_URL }}quform/js/scripts.js"></script>
+
+<!-- all js include end -->
+
+</body>
+
+</html>

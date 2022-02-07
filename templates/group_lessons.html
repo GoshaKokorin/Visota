@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Наши соты направлений
+{% endblock %}
+
+{% block content %}
+    <!-- PAGE TITLE
+         ================================================== -->
+    <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="6"
+             data-background="{{ STATIC_URL }}img/banner/page-title.jpg">
+        <div class="container position-unset">
+            <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1></h1>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="ps-0">
+                            <li><a href="{% url 'home' %}">Главная</a></li>
+                            <li><a href="#!"></a>Наши соты направлений</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG GRID
+    ================================================== -->
+    <section style="padding-top: 40px;">
+        <div class="container">
+            <div class="text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <span class="text-secondary mb-2 d-block fw-bold text-uppercase">{{ group_lessons.title }}</span>
+                <h2 class="mb-0 h1">Наши соты направлений</h2>
+            </div>
+            <div class="row mt-n1-9">
+                {% for  group_lesson in group_lessons_item %}
+                    <div class="col-md-6 col-lg-4 mt-1-9">
+                        <article class="card card-style3 border-0 h-100">
+                            <div class="card-img position-relative">
+                                <img src="{{ MEDIA_URL }}{{  group_lesson.image }}" alt="...">
+                            </div>
+                            <div class="card-body p-xl-1-9 p-4">
+                                <h3 class="h5 mb-3"><a
+                                        href="{{  group_lesson.get_absolute_url }}">{{  group_lesson.title }}</a></h3>
+                                <a href="{{  group_lesson.get_absolute_url }}"
+                                   class="fw-bold text-primary text-secondary-hover">Узнать больше</a>
+                            </div>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

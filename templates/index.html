@@ -1,0 +1,476 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Творческая студия "Высота"
+{% endblock %}
+
+{% block content %}
+    <!-- BANNER
+    ================================================== -->
+    {#    <section#}
+    {#            class="  bg-img cover-background  overflow-visible pb-0 pt-10 pt-md-12 pt-lg-16 pt-xl-20 pt-xxl-24"#}
+    {#            data-overlay-dark="6" data-background="{{ STATIC_URL }}img/banner/page-title.jpg">#}
+    {#       <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="6"#}
+    {#             data-background="{{ STATIC_URL }}img/banner/page-title.jpg">#}
+    {#        <div class="text-start item bg-img cover-background pt-4 pb-14 py-md-16 py-lg-20 py-xxl-24 rounded-lg left-overlay-dark">#}
+    {#            <div class="container pt-4 pt-md-0">#}
+    {#                <div class="row align-items-center">#}
+    {#                    <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 mb-1-9 mb-lg-0 py-5">#}
+    {#                        <h1 class=" display-21 display-sm-19 display-md-17 display-lg-8 mb-4" style="color: white">Творческая#}
+    {#                            студия "Высота"</h1>#}
+    {#                        <p class="mb-2-3 opacity8 display-md-28 w-lg-80" style="color: white">ВЫсота - не оговорка по Фрейду,#}
+    {#                            ведь Вы часть нашей команды, только вместе объединившись в одну ячейку, а в нашем понимании#}
+    {#                            - это СОТА, Мы сможем достичь высот! Сегодня будем ознакамливать Вас с нашим перечнем#}
+    {#                            услуг! </p>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
+
+{#    <section class="page-title-section bg-img cover-background left-overlay-dark" data-overlay-dark="6"#}
+{#             data-background="static/img/banner/page-title.jpg">#}
+{#        <div class="container position-unset">#}
+{#            <div class="page-title mx-1-6 mx-lg-2-0 mx-xl-2-6 mx-xxl-2-9">#}
+{##}
+{#                <div class="row">#}
+{#                    <div class="col-md-12">#}
+{#                        <h1>Творческая#}
+{#                            студия "Высота"</h1>#}
+{#                    </div>#}
+{#                    <div class="col-md-12">#}
+{#                        <ul class="ps-0">#}
+{#                            <li>ВЫсота - не оговорка по Фрейду,#}
+{#                                ведь Вы часть нашей команды, только вместе объединившись в одну ячейку, а в нашем#}
+{#                                понимании#}
+{#                                - это СОТА, Мы сможем достичь высот!#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+
+    <!-- BLOG
+       ================================================== -->
+    <section class="blog3 position-relative" style="padding-top: 20px;padding-bottom: 0px;">
+        <div class="container">
+            <div class="title-style2 text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <span>Новости</span>
+                <h2 class="h1 mb-0">Новые занятия</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 mb-1-9 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+                    <div class="blog-carousel owl-carousel owl-theme">
+                        {% for blog in blog %}
+                        <article class="blog-box">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="blog-img">
+                                        <img src="{{ MEDIA_URL }}{{ blog.image }}" class="rounded" alt="...">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="blog-text">
+                                        <span class="mb-1 d-block text-primary">{{ blog.date_post }}</span>
+                                        <h3 class="h4 mb-4"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
+                                        <p class="w-xl-90 mb-1-9">{{ blog.text_mini | safe }}</p>
+                                        <a class="butn-style3 small" href="{{ blog.get_absolute_url }}">Узнать больше</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 80px;padding-bottom: 0px;">
+        <div class="container">
+            <div class="text-center wow fadeIn" data-wow-delay="100ms">
+                <iframe class="w-80 story-video" style="height: 400px" src="https://www.youtube.com/embed/BKMEgPSjt_s"
+                        allow="encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Групповые занятия
+    ================================================== -->
+    <section style="padding-top: 80px;padding-bottom: 0px;">
+        <div class="container">
+            <div class="text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <h2 class="mb-0 h1">Наши соты направлений</h2>
+            </div>
+            <div class="row mt-n1-9">
+                {% for group_lesson in group_lessons %}
+                    <div class="col-sm-6 col-lg-3 mt-1-9 wow fadeIn" data-wow-delay="200ms">
+                        <div class="card card-style3 border-0 text-center">
+                            <div class="card-img position-relative">
+                                <a href="{{ group_lesson.get_absolute_url }}">
+                                    <img width="" src="{{ MEDIA_URL }}{{ group_lesson.image }}"
+                                         class="card-img-top"
+                                         alt="{{ group_lesson.title }}"></a>
+                            </div>
+                            <div class="card-body p-1-9">
+                                <a href="{{ group_lesson.get_absolute_url }}"><h3
+                                        class="h5">{{ group_lesson.title }}</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Продленка
+   ================================================== -->
+    <section class="aboutus" style="padding-bottom: 0px;padding-top: 80px;">
+        <div class="container">
+            <div class="text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <h2 class="mb-0 h1">Продленка</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-2-2 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+                    <div class="pe-lg-1-9 pe-xl-2-9 position-relative z-index-1">
+                        <img src="{{ STATIC_URL }}img/team/prolongation.jpg" alt="..." class="rounded">
+                        <span class="about-img d-none d-lg-inline-block">
+                                <img src="{{ STATIC_URL }}img/content/dots1.png" alt="..."
+                                     class="position-absolute left-n25 bottom-n20 z-index-minus2 ani-left-right">
+                            </span>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="400ms">
+                    <div class="about-title">
+                        <p>Чем заняться маленькому непоседе после окончания уроков в школе? Продленка поможет юному
+                            школьнику не только с пользой провести досуг, но и обеспечит ему полную безопасность, пока
+                            родители будут заняты важными делами.</p>
+                        <p>С детьми работают опытные педагоги, время досуга и занятий грамотно планируется, поэтому вы
+                            можете быть уверены: с нами ребенок не будет скучать.
+                            После уроков школьников ждет вкусный обед и прогулка на свежем воздухе, чтобы дети смогли
+                            отдохнуть, пообщаться, настроиться на покорение творческих высот. После обеда педагог
+                            поможет выполнить домашнее задание. Родителям не придется вечером беспокоиться о том, не
+                            забыл ли школьник подготовиться к следующему учебному дню.
+
+                        </p>
+                        <p>Наша продленка предусматривает пребывание ребят с 12-00 до 18-00 с возможностью посещать
+                            дополнительные занятия.</p>
+                        <ul class="list-style1 mb-4">
+                            <li>Решение логических и нестандартных задач</li>
+                            <li>Художественное творчество</li>
+                            <li>Помощь с домашним заданием</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-6 mt-2-9 wow fadeIn" data-wow-delay="200ms">
+                        <div class="pricing-block text-center px-6 pb-3">
+                            <div class="pricing-head">
+                                <h4 class="h2">Абонемент на месяц</h4>
+                            </div>
+                            <div class="price-plan">
+                                <h3 class="h1 mb-1">9300 руб.</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-2-9 wow fadeIn" data-wow-delay="200ms">
+                        <div style="margin-top: 40px;">
+                            <button type="button" class="butn-style1" data-bs-toggle="modal" data-bs-target="#centered">
+                                Записаться
+                            </button>
+                        </div>
+                    </div>
+                    <!-- default Modal-->
+                    <div class="modal fade" id="centered" tabindex="-1" aria-labelledby="centeredLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="centeredLabel">Записаться</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form class="quform" action="" method="POST" enctype="multipart/form-data"
+                                          onclick="">
+                                        {% csrf_token %}
+                                        <div class="quform-elements">
+                                            <div class="row">
+                                                <!-- Begin Text input element -->
+                                                <div class="col-md-12">
+                                                    <div class="quform-element">
+                                                        <label for="name">Имя</label>
+                                                        <div class="quform-input">
+                                                            {{ form.name|add_class:'form-control' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Text input element -->
+
+                                                <!-- Begin Text input element -->
+                                                <div class="col-md-12">
+                                                    <div class="quform-element">
+                                                        <label for="email">Email</label>
+                                                        <div class="quform-input">
+                                                            {{ form.connection|add_class:'form-control' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Text input element -->
+
+                                                <!-- Begin Textarea element -->
+                                                <div class="col-md-12">
+                                                    <div class="quform-element">
+                                                        <label for="message">Сообщение</label>
+                                                        <div class="quform-input">
+                                                            {{ form.text|add_class:'form-control' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Textarea element -->
+
+                                                <!-- Begin Submit button -->
+                                                <div class="col-md-12">
+                                                    <div class="quform-submit-inner">
+                                                        <button class="butn-style3" type="submit"><span>Отправить</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="quform-loading-wrap text-start"><span
+                                                            class="quform-loading"></span></div>
+                                                </div>
+                                                <!-- End Submit button -->
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Мастер классы
+    ================================================== -->
+    <section>
+        <div class="container">
+            <div class="text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <h2 class="mb-0 h1">Мастер-классы</h2>
+            </div>
+            <div class="row mt-n1-9">
+                {% for master_class in master_classes %}
+                    <div class="col-sm-6 col-lg-3 mt-1-9 wow fadeIn" data-wow-delay="200ms">
+                        <div class="card card-style3 border-0 text-center">
+                            <div class="card-img position-relative">
+                                <a href="{{ master_class.get_absolute_url }}"><img
+                                        src="{{ MEDIA_URL }}{{ master_class.image }}" class="card-img-top"
+                                        alt="{{ master_class.title }}"></a>
+                            </div>
+                            <div class="card-body p-1-9">
+                                <a href="{{ master_class.get_absolute_url }}"><h3
+                                        class="h5">{{ master_class.title }}</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Подготовка к школе
+    ================================================== -->
+    <section class="about-section" style="padding-top: 60px;padding-bottom: 80px;">
+        <div class="container mt-lg-3 mt-xl-0">
+            <div class="row clearfix align-items-xl-center">
+                <div class="col-lg-6 text-column mb-2-9 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+                    <div class="pe-xl-2-9">
+                        <h2 class="h1 mb-4">{{ prodl.title }}</h2>
+                        <p class="pb-3">{{ prodl.text | safe }}
+                        </p>
+                        <div class="clearfix d-sm-flex align-items-center mb-2-6">
+                            <ul class="list-style1 mb-1-9 mb-sm-0">
+                                {% for point in prodl.group_lessons_point.all %}
+                                    <li>{{ point.title }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div>
+                            <a class="butn-style3 medium" href="{{ prodl.get_absolute_url }}">Узнать больше</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 position-relative mb-2-9 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+                    <div class="row align-items-center ps-lg-1-9 position-relative z-index-9">
+                        <div class="col-sm-12">
+                            <img src="{{ MEDIA_URL }}{{ prodl.image }}" class="rounded" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="circle-md left-10 top-15 border-secondary-color d-none d-xl-block"></div>
+        <div class="bg-img bg-stripes right-25 top-15 ani-left-right d-none d-xl-block"
+             data-background="img/content/bg-stripes.png"></div>
+    </section>
+
+    <!-- Кофейня
+    ================================================== -->
+    <section class="about-section" style="padding-top: 80px;">
+        <div class="container mt-lg-3 mt-xl-0">
+            <div class="text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <h2 class="mb-0 h1">Ждем вас в гости в нашу кофейню!</h2>
+            </div>
+            <div class="row clearfix align-items-xl-center">
+                <div class="col-lg-6 position-relative mb-2-9 mb-lg-0 wow fadeIn" data-wow-delay="200ms">
+                    <div class="row align-items-center ps-lg-1-9 position-relative z-index-9">
+                        <div class="col-sm-12">
+                            <img src="{{ STATIC_URL }}img/team/cofe.png" class="rounded" alt="Кофейня">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-column mb-2-9 mb-lg-0 wow fadeIn" data-wow-delay="400ms">
+                    <div class="pe-xl-2-9">
+                        <div class="clearfix d-sm-flex align-items-center mb-2-6" style="padding-top: 60px;">
+                            <ul class="list-style4 mb-1-9 mb-sm-0">
+                                <li style="font-size: 18px"><i class="fas fa-book-open" style="color: #34da89"></i>
+                                    Согревающее меню
+                                </li>
+                                <li><i class="fas fa-utensils" style="color: #34da89"></i> Правильные завтраки</li>
+                                <li><i class="fas fa-cookie" style="color: #34da89"></i> Десерты с низким содержанием
+                                    сахара
+                                </li>
+                                <li><i class="fas fa-coffee" style="color: #34da89"></i> Премиальный кофе</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM
+    ================================================== -->
+    <section style="padding-top: 0px;">
+        <div class="container">
+            <div class="text-center mb-2-9 mb-lg-6 wow fadeIn" data-wow-delay="100ms">
+                <h2 class="mb-0 h1">Контакты</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-xl-4 mb-2-9 mb-lg-0">
+                    <div class="pe-lg-3 mt-n1-9">
+                        <div class="card card-style8 mt-1-9">
+                            <div class="card-body p-1-9">
+                                <div class="media">
+                                    <div class="icon-box">
+                                        <i class="ti-location-pin text-primary z-index-9 position-relative"></i>
+                                        <div class="box-circle primary"></div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="h5">Местоположение</h4>
+                                        <span>Челябинск, пр. Ленина 33</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-style8 mt-1-9">
+                            <div class="card-body p-1-9">
+                                <div class="media">
+                                    <div class="icon-box">
+                                        <i class="ti-mobile text-primary z-index-9 position-relative"></i>
+                                        <div class="box-circle primary"></div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="h5">Телефон</h4>
+                                        <span class="d-block">+7(950)742-18-85</span>
+                                        <span class="d-block">+7(351)776-50-20</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-style8 mt-1-9">
+                            <div class="card-body p-1-9">
+                                <div class="media">
+                                    <div class="icon-box">
+                                        <i class="ti-email text-primary z-index-9 position-relative"></i>
+                                        <div class="box-circle primary"></div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="h5">Email</h4>
+                                        <span class="d-block">Vysota74@gmail.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-8">
+                    <div class="contact-form p-4 p-md-5 ms-xl-3">
+                        <h2 class="h3 mb-4">Есть вопрос? Узнайте у нас!</h2>
+                        <form class="quform" action="" method="POST" enctype="multipart/form-data" onclick="">
+                            {% csrf_token %}
+                            <div class="quform-elements">
+                                <div class="row">
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <label for="name">Имя</label>
+                                            <div class="quform-input">
+                                                {{ form.name|add_class:'form-control' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Text input element -->
+
+                                    <!-- Begin Text input element -->
+                                    <div class="col-md-6">
+                                        <div class="quform-element form-group">
+                                            <label for="email">Email</label>
+                                            <div class="quform-input">
+                                                {{ form.connection|add_class:'form-control' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Text input element -->
+
+                                    <!-- Begin Textarea element -->
+                                    <div class="col-md-12">
+                                        <div class="quform-element form-group">
+                                            <label for="message">Сообщение</label>
+                                            <div class="quform-input">
+                                                {{ form.text|add_class:'form-control' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Textarea element -->
+
+                                    <!-- Begin Submit button -->
+                                    <div class="col-md-12">
+                                        <div class="quform-submit-inner">
+                                            <button class="butn-style3" type="submit"><span>Отправить</span></button>
+                                        </div>
+                                        <div class="quform-loading-wrap text-start"><span class="quform-loading"></span>
+                                        </div>
+                                    </div>
+                                    <!-- End Submit button -->
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <iframe width="0" height="0"></iframe>
+    <iframe class="map" id="gmap_canvas"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2279.3051337133443!2d61.41516541635388!3d55.16043748039912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c5ed5029d3e807%3A0x70f1a46a7d4c73b2!2z0L_RgC4g0JvQtdC90LjQvdCwLCAzMywg0KfQtdC70Y_QsdC40L3RgdC6LCDQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC-0LHQuy4sIDQ1NDA5MQ!5e0!3m2!1sru!2sru!4v1634683427922!5m2!1sru!2sru"></iframe>
+
+{% endblock %}
